@@ -34,7 +34,11 @@ jobs:
         run: npm ci
       - name: Test code
         run: npm run test
+        id: test
+        continue-on-error: true
       - name: Upload test report
+        # only upload test report if step with id "test" failed
+        if: steps.test.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: test-report
