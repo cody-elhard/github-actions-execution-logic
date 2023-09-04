@@ -67,23 +67,8 @@ jobs:
         with:
           name: dist-files
           path: dist
+
+  # https://docs.github.com/en/actions/learn-github-actions/reusing-workflows
   deploy:
     needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: dist-files
-      - name: Output contents
-        run: ls
-      - name: Deploy
-        run: echo "Deploying..."
-
-  report:
-    needs: [lint, deploy]
-    if: failure()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Output simple log
-        run: echo "One of the previous jobs failed"
+    uses: ./.github/workflows/reusable.yml
