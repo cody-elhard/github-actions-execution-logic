@@ -19,7 +19,6 @@ describe('MainContent', () => {
 
     const button = screen.getByRole('button');
     await userEvent.click(button);
-    // break the test
-    expect(screen.getByTestId('not-a-valid-id')).toBeInTheDocument();
+    expect(screen.getByTestId('help-area')).toBeInTheDocument();
   });
 });
