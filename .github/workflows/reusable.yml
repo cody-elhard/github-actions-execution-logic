@@ -14,4 +14,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output Deploying
-        run: echo "Deploying ${{ github.event.inputs.message }}"
+        run: echo "Deploying ${{ inputs.message }}"
