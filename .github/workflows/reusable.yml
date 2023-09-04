@@ -1,8 +1,17 @@
+# Take input to output a custom message in the workflow run log
+
 name: Reusable Deploy
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      message:
+        type: string
+        description: 'Message to display'
+        required: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Output Deploying
-        run: echo "Deploying"
+        run: echo "Deploying ${{ github.event.inputs.message }}"

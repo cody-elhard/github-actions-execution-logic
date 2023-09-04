@@ -72,3 +72,5 @@ jobs:
   deploy:
     needs: build
     uses: ./.github/workflows/reusable.yml
+    with:
+      message: 'My custom message input'
